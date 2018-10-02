@@ -55,7 +55,8 @@ switch method
             index = find(cumprob > Dpoints(i),1,'first');
             C1 = edges(index);
             [vals, sort_index] = sort((vacf_base(:,1)-C1).*2, 'ascend');
-            C2 = mean(vacf_base(sort_index(1:100),2),1);
+            sort_max = min(length(sort_index), 100);
+            C2 = mean(vacf_base(sort_index(1:sort_max),2),1);
             vacf0(i,1:2) = [C1 C2];
         end
         
