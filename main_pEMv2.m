@@ -18,9 +18,10 @@ addpath('pEMv2');
 
 %%  load file
 
+dt = .032;              % time between steps (preset it in case it isn't loaded inside the .mat file)
 [filename,dirpath] = uigetfile('*.mat','Select protein track positions mat file');
-data = load(fullfile(dirpath,filename));
-X_raw = data.X;
+load(fullfile(dirpath,filename));
+X_raw = X;
 
 % get only one dimensional tracks
 X_new = cell(length(X_raw), 1);
@@ -33,8 +34,7 @@ X = X_new;
 %% user set parameters
 
 % movie parameters
-dt = .032;              % time between steps
-dE = .032;              % exposure time
+dE = dt;              % exposure time
 
 % pEM parameters
 minStates = 2;          % minimum number of states to explore
