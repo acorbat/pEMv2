@@ -21,7 +21,7 @@ addpath('pEMv2');
 dt = .032;              % time between steps (preset it in case it isn't loaded inside the .mat file)
 % [filename,dirpath] = uigetfile('*.mat','Select protein track positions mat file');
 % Search for all files inside the results/tracking folder
-files = dir('data/tracking/*.mat');
+files = dir('/mnt/data/Laboratorio/uVesiculas/docking/results/tracking/*.mat');
 
 for f=1:numel(files)
     file = files(f);
@@ -46,7 +46,7 @@ for f=1:numel(files)
     dE = dt;              % exposure time
 
     % pEM parameters
-    minStates = 2;          % minimum number of states to explore
+    minStates = 1;          % minimum number of states to explore
     maxStates = 6;          % maximum number of states to explore
     numReinitialize = 3;    % number of reinitialization trials
     numPerturb = 30;        % number of perturbation trials
@@ -57,7 +57,7 @@ for f=1:numel(files)
                             % lambda = 0.01 for correction)
 
 
-    splitLength = 15;                   % length of steps to split each track
+    splitLength = 30;                   % length of steps to split each track
     numFeatures = 5;        % number of covariance features to include (min=2 for
                                         % normal diffusion, 3-5 for non-normal diffusion)
     %% run pEM version 2
